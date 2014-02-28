@@ -1,0 +1,46 @@
+.image-box {
+    position: relative;
+}
+
+.image-box-media {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+}
+
+.image-box-overlay{
+    position: absolute;
+    color: orange !important;
+    top: 200px;
+    width: 100%;
+    padding: 50px;
+    background: rgba(0,0,0,0.7);
+
+}
+
+section.top {
+    min-height: 500px;
+}
+
+.bottom-20 {
+    margin-bottom: 20px !important;
+}
+
+.bottom-40 {
+    margin-bottom: 40px !important;
+}
+.bottom-50 {
+    margin-bottom: 50px !important;
+}
+.bottom-60 {
+    margin-bottom: 60px !important;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}

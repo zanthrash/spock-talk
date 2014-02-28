@@ -1,0 +1,17 @@
+{
+  "name": "spock_sf_gug",
+  "version": "0.0.0",
+  "authors": [
+    "Zan Thrash <zanthrash@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
