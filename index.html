@@ -79,7 +79,83 @@
 
                 </section>
 
-                <section data-transition="none" class="top">
+                <!--
+                    INTERACTIONS: PARTS
+                -->
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        1 * fooService.bar('baz') >> 'returnValue'
+                    </p>
+                </section>
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Cardinality</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        <span class="box highlight-red">1</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
+
+                </section>
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Target Constraint</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        1 * <span class="box highlight-red">fooService</span>.bar('baz') >> 'returnValue'
+                    </p>
+
+                </section>
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Method Constraint</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        1 * fooService.<span class="box highlight-red">bar</span>('baz') >> 'returnValue'
+                    </p>
+
+                </section>
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Argument Constraints</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        1 * fooService.bar(<span class="box highlight-red">'baz'</span>) >> 'returnValue'
+                    </p>
+
+                </section>
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Stub Return Value</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        1 * fooService.bar('baz') >> <span class="box highlight-red">'returnValue'</span>
+                    </p>
+
+                </section>
+
+                <!--
+                    INTERACTIONS: CARDINALITY
+                -->
+                <section data-transition="linear" data-background-transition="slide" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
                         <h4>Cardinality :: Integer</h4>
@@ -90,9 +166,11 @@
                     </p>
 
 
-                    <ul>
-                        <li class="fragment">Exactly N number of calls</li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <li class="fragment">Exactly <span class="highlight-red">N</span> number of calls</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section data-transition="none" class="top">
@@ -123,7 +201,7 @@
 
 
                     <ul>
-                        <li class="fragment">Exclusive</li>
+                        <li class="fragment">Range is Exclusive</li>
                         <li class="fragment">At least 1 call</li>
                         <li class="fragment">But no more than 3</li>
                     </ul>
@@ -157,7 +235,6 @@
                         <span class="box highlight-red">( _..3)</span> * fooService.bar('baz') >> 'returnValue'
                     </p>
 
-
                     <ul>
                         <li class="fragment">Constrain the max number of calls</li>
                     </ul>
@@ -181,6 +258,23 @@
                         <li class="fragment">Kind of pointless</li>
                     </ul>
                 </section>
+
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality</h4>
+                    </div>
+
+                    <!--<img src="http://placehold.it/350x150" alt=""/>-->
+
+                    <ul>
+                        <li class="fragment"> TooManyInvocationsError </li>
+                        <li class="fragment"> TooFewInvocationsError </li>
+                    </ul>
+
+                </section>
+
+
 
                 <section data-transition="none" class="top">
                     <h3>Diagram Interactions</h3>
