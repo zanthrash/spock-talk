@@ -99,9 +99,19 @@ module.exports = function(grunt) {
 
 		watch: {
 			main: {
-				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css' ],
-				tasks: 'default'
+				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css', 'css/shame.css' ],
+				tasks: 'default',
+                options: {
+                    livereload: true
+                }
+
 			},
+            html: {
+                files: ['index.html'],
+                options: {
+                    livereload: true
+                }
+            },
 			theme: {
 				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
 				tasks: 'themes'

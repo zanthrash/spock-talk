@@ -23,6 +23,29 @@ section.top {
     min-height: 500px;
 }
 
+.highlight-red{
+    color: #ff2c2d
+}
+
+.highlight-green {
+    color: #17ff2e;
+}
+
+.highlight-blue {
+    color: #1b91ff;
+}
+
+li.fragment {
+    list-style-type: none;
+}
+
+.box.highlight-red {
+    border-radius: 5px;
+    padding: 4px 10px;
+    background-color: #ff2c2d;
+    color: #fff
+}
+
 .bottom-20 {
     margin-bottom: 20px !important;
 }

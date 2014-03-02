@@ -82,22 +82,104 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardnality</h4>
+                        <h4>Cardinality :: Integer</h4>
                     </div>
 
                     <p class="bottom-40">
-                        <span class="fragment highlight-red">1</span>
-                        * mockTarget.methodName('mockParam') >> 'returnValue'
+                        <span class="box highlight-red">1</span> * fooService.bar('baz') >> 'returnValue'
                     </p>
 
-                    <div class="left">
-                        <p>1 <span><i class="fa fa-arrow-right"></i></span> exactly one call</p>
-                        <p>0  ->  exactly zero call</p>
+
+                    <ul>
+                        <li class="fragment">Exactly N number of calls</li>
+                    </ul>
+                </section>
+
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality :: Integer</h4>
                     </div>
 
+                    <p class="bottom-40">
+                        <span class="box highlight-red">0</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
 
 
+                    <ul>
+                        <li class="fragment">Ensure never called</li>
+                    </ul>
+                </section>
 
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality :: Ranges</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        <span class="box highlight-red">( 1..3 )</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
+
+
+                    <ul>
+                        <li class="fragment">Exclusive</li>
+                        <li class="fragment">At least 1 call</li>
+                        <li class="fragment">But no more than 3</li>
+                    </ul>
+                </section>
+
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality :: Ranges</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        <span class="box highlight-red">( 1.._ )</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
+
+
+                    <ul>
+                        <li class="fragment">_ = Wildcard</li>
+                        <li class="fragment">At least 1 call </li>
+                        <li class="fragment">Unlimited Upper Bound</li>
+                    </ul>
+                </section>
+
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality :: Ranges</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        <span class="box highlight-red">( _..3)</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
+
+
+                    <ul>
+                        <li class="fragment">Constrain the max number of calls</li>
+                    </ul>
+                </section>
+
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3 >Interactions </h3>
+                        <h4>Cardinality :: Wildcard</h4>
+                    </div>
+
+                    <p class="bottom-40">
+                        <span class="box highlight-red">_</span> * fooService.bar('baz') >> 'returnValue'
+                    </p>
+
+
+                    <ul>
+                        <li class="fragment">Any number of calls including zero</li>
+                        <li class="fragment">( 0.._ )</li>
+                        <li class="fragment">( _.._ )</li>
+                        <li class="fragment">Kind of pointless</li>
+                    </ul>
                 </section>
 
                 <section data-transition="none" class="top">
@@ -456,5 +538,6 @@ function linkify( selector ) {
 
 		</script>
 
+        <script src="http://127.0.0.1:35729/livereload.js?snipver=1"></script>
 	</body>
 </html>
