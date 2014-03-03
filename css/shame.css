@@ -23,15 +23,16 @@ section.top {
     min-height: 500px;
 }
 
-.highlight-red{
+
+.highlight.red{
     color: #ff2c2d
 }
 
-.highlight-green {
+.highlight.green {
     color: #17ff2e;
 }
 
-.highlight-blue {
+.highlight.blue {
     color: #1b91ff;
 }
 
