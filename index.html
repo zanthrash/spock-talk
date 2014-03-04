@@ -79,6 +79,57 @@
 
                 </section>
 
+
+                <section class="top">
+                    <div class="left bottom-60">
+                        <h3>Interactions</h3>
+                    </div>
+
+                    <h3 class="fragment">Mocks</h3>
+                    <h3 class="fragment">Stubs</h3>
+                    <h3 class="fragment">Spies</h3>
+
+                </section>
+
+                <section class="top">
+                    <div class="left bottom-60">
+                        <h3>Interactions</h3>
+                        <h4 class="highlight red">Mocks</h4>
+                    </div>
+
+                    <blockquote>
+                        A substitute for a collaborator of the SUT.<br>
+                        One where we <b class="highlight blue">do not care</b> what the return
+                        value of the mocked collaborator is, only that it <b class="highlight blue">was called</b> by our SUT
+                    </blockquote>
+                </section>
+
+                <section class="top">
+                    <div class="left bottom-60">
+                        <h3>Interactions</h3>
+                        <h4 class="highlight red">Stubs</h4>
+                    </div>
+                    <blockquote>
+                        A substitute for a collaborator of the SUT.  <br>
+                        One where we <b class="highlight blue">do care</b> what the return
+                        value of the mocked collaborator is, and want to have <b class="highlight blue">controller</b> over it
+                    </blockquote>
+
+                </section>
+
+                <section class="top">
+                    <div class="left bottom-60">
+                        <h3>Interactions</h3>
+                        <h4 class="highlight red">Spies</h4>
+                    </div>
+                    <blockquote>
+                        A wrapper around a collaborator of the SUT.  <br>
+                        One where we want to passthrough to an actual <b class="highlight blue">object</b> but want to also
+                        <b class="highlight blue"> track that it was called.</b>
+                    </blockquote>
+
+                </section>
+
                 <!--
                     INTERACTIONS: PARTS
                 -->
@@ -311,9 +362,15 @@
                         <h4>Method Constraints <i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Explicit</span> </h4>
                     </div>
 
-                    <p>
+                    <p class="bottom-50">
                         1 * mockTarget.<span class="box highlight-red">methodName</span>('mockParam') >> 'returnValue'
                     </p>
+
+
+                    <ul>
+                        <li class="fragment">Can use groovy property syntax: </li>
+                        <li class="fragment">fooService.<span class="span highlight green">getBar()</span>   ==   fooService.<span class="span highlight green">bar</span></li>
+                    </ul>
                 </section>
 
                 <section data-transition="none" class="top">
@@ -501,10 +558,15 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3>Interactions</h3>
-                        <h4>Careful<i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Don't get carried away</span> </h4>
+                        <h4>Careful <i class="fa fa-caret-right highlight red"></i> <span class="highlight red"> Don't get carried away</span> </h4>
                     </div>
 
-                    <p > _.._  * _._(*_) >> _ </p>
+                    <p class="bottom-50"> _.._  * _._(*_) >> _ </p>
+
+                    <ul>
+                        <li class="fragment">Completely valid...</li>
+                        <li class="fragment"><h4>Don't do this!!!</h4></li>
+                    </ul>
                 </section>
 
 
