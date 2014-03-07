@@ -65,9 +65,8 @@
                         <li><i class="fa-li fa fa-github-square"></i>zanthrash</li>
                     </ul>
 
-					<aside class="notes">
-
-					</aside>
+                    <aside class="notes">
+                    </aside>
 				</section>
 
                 <section>
@@ -81,6 +80,74 @@
 
 
                 <section class="top">
+                    <div class="left bottom-50">
+                        <h3>What Is Spock?</h3>
+                    </div>
+
+                    <blockquote class="bottom-40">
+                        Spock is a testing and specification framework for Java and Groovy applications.
+                    </blockquote>
+
+                    <blockquote>
+                        What makes it stand out from the crowd is its <span class="highlight blue">beautiful and highly expressive specification language</span> .
+                    </blockquote>
+
+                </section>
+
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h3>What Is Spock?</h3>
+                    </div>
+
+                    <p class="fragment">JUnit</p>
+                    <p class="fragment">RSpec</p>
+                    <p class="fragment">Cucumber</p>
+                    <p class="fragment">jMock</p>
+
+                </section>
+
+
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h3>Why Spock?</h3>
+                    </div>
+
+                    <p class="fragment">Grails 2.3.x</p>
+                    <p class="fragment">Readability</p>
+                    <p class="fragment">Parametrization</p>
+                    <p class="fragment">Crazy Powerful Mocking</p>
+                    <p class="fragment">Extendable</p>
+
+
+                    <aside class="notes">
+                        <ul>
+                            <li>In a world where we already have JUnit & Groovy/Grails specific testing & dozens of mocking frameworks to choose from....</li>
+                        </ul>
+                    </aside>
+                </section>
+
+
+                <section class="top" data-state="code">
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:18ggpt;"><span style="color:#888888;background-color:#313335;"> 1 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">    List getQueueEntriesForProvider() {
+</span><span style="color:#888888;background-color:#313335;"> 2 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        <span class="fragment highlight-red">InternalUser</span> user = securityService.user as InternalUser
+</span><span style="color:#888888;background-color:#313335;"> 3 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        Provider provider = Provider.findByInternalUser(user)
+</span><span style="color:#888888;background-color:#313335;"> 4
+ 5 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        ArrayList list = getQueueEntriesFromList( findTreatmentRequestsForProvider(provider) )
+</span><span style="color:#888888;background-color:#313335;"> 6 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        ArrayList filteredList = list.findAll {
+</span><span style="color:#888888;background-color:#313335;"> 7 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">            it.className in [InProgressFollowUpTreatmentRequest.class.name,
+</span><span style="color:#888888;background-color:#313335;"> 8 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    PausedFollowUpTreatmentRequest.class.name,
+</span><span style="color:#888888;background-color:#313335;"> 9 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    OnHoldFollowUpTreatmentRequest.class.name,
+</span><span style="color:#888888;background-color:#313335;">10 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    NewFollowUpTreatmentRequest.class.name
+</span><span style="color:#888888;background-color:#313335;">11 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">            ]
+</span><span style="color:#888888;background-color:#313335;">12 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        }
+</span><span style="color:#888888;background-color:#313335;">13
+14 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        filteredList
+</span><span style="color:#888888;background-color:#313335;">15 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">    }</span></pre>
+                </section>
+
+
+
+                <section class="top">
                     <div class="left bottom-60">
                         <h3>Interactions</h3>
                     </div>
@@ -91,14 +158,19 @@
 
                 </section>
 
+
+
                 <section class="top">
                     <div class="left bottom-60">
                         <h3>Interactions</h3>
                         <h4 class="highlight red">Mocks</h4>
                     </div>
 
-                    <blockquote>
+                    <blockquote class="bottom-20">
                         A substitute for a collaborator of the SUT.<br>
+                    </blockquote>
+
+                    <blockquote>
                         One where we <b class="highlight blue">do not care</b> what the return
                         value of the mocked collaborator is, only that it <b class="highlight blue">was called</b> by our SUT
                     </blockquote>
@@ -109,8 +181,10 @@
                         <h3>Interactions</h3>
                         <h4 class="highlight red">Stubs</h4>
                     </div>
-                    <blockquote>
+                    <blockquote class="bottom-20">
                         A substitute for a collaborator of the SUT.  <br>
+                    </blockquote>
+                    <blockquote>
                         One where we <b class="highlight blue">do care</b> what the return
                         value of the mocked collaborator is, and want to have <b class="highlight blue">controller</b> over it
                     </blockquote>
@@ -122,13 +196,50 @@
                         <h3>Interactions</h3>
                         <h4 class="highlight red">Spies</h4>
                     </div>
-                    <blockquote>
+                    <blockquote class="bottom-20">
                         A wrapper around a collaborator of the SUT.  <br>
+                    </blockquote>
+                    <blockquote>
                         One where we want to passthrough to an actual <b class="highlight blue">object</b> but want to also
                         <b class="highlight blue"> track that it was called.</b>
                     </blockquote>
 
                 </section>
+
+
+                <!--
+                    Creating Mocks
+                -->
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Dynamic</span></h4>
+                    </div>
+
+
+                    <p><span class="highlight green">def</span> fooService = Mock(FooService)</p>
+                </section>
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Static</span></h4>
+                    </div>
+
+
+                    <p><span class="highlight green">FooService</span> fooService = Mock()</p>
+
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Mock() is a method on MockingApi</li>
+                            <li>MockingApi partent class to Specification</li>
+                            <li>Prefer the static way -- better IDE support</li>
+                        </ul>
+                    </aside>
+                </section>
+
+
 
                 <!--
                     INTERACTIONS: PARTS
@@ -200,6 +311,8 @@
                     <p class="bottom-40">
                         1 * fooService.bar('baz') >> <span class="box highlight-red">'returnValue'</span>
                     </p>
+
+
 
                 </section>
 
@@ -923,7 +1036,9 @@ function linkify( selector ) {
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
+
 			});
+
 
 		</script>
 
