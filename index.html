@@ -16,6 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/shame.css"/>
+        <!--<link rel="stylesheet" href="css/chardinjs.css"/>-->
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/opi.css" id="theme">
 
@@ -50,7 +51,7 @@
 			<div class="slides">
 				<section>
 					<h1>Spock Testing</h1>
-					<h3>Soup to Nuts</h3>
+					<h3 data-intro="Subtitle" data-position="bottom">Soup to Nuts</h3>
 				</section>
 
 				<section>
@@ -127,22 +128,42 @@
                 </section>
 
 
-                <section class="top" data-state="code">
-                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:18ggpt;"><span style="color:#888888;background-color:#313335;"> 1 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">    List getQueueEntriesForProvider() {
-</span><span style="color:#888888;background-color:#313335;"> 2 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        <span class="fragment highlight-red">InternalUser</span> user = securityService.user as InternalUser
-</span><span style="color:#888888;background-color:#313335;"> 3 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        Provider provider = Provider.findByInternalUser(user)
-</span><span style="color:#888888;background-color:#313335;"> 4
- 5 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        ArrayList list = getQueueEntriesFromList( findTreatmentRequestsForProvider(provider) )
-</span><span style="color:#888888;background-color:#313335;"> 6 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        ArrayList filteredList = list.findAll {
-</span><span style="color:#888888;background-color:#313335;"> 7 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">            it.className in [InProgressFollowUpTreatmentRequest.class.name,
-</span><span style="color:#888888;background-color:#313335;"> 8 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    PausedFollowUpTreatmentRequest.class.name,
-</span><span style="color:#888888;background-color:#313335;"> 9 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    OnHoldFollowUpTreatmentRequest.class.name,
-</span><span style="color:#888888;background-color:#313335;">10 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">                    NewFollowUpTreatmentRequest.class.name
-</span><span style="color:#888888;background-color:#313335;">11 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">            ]
-</span><span style="color:#888888;background-color:#313335;">12 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        }
-</span><span style="color:#888888;background-color:#313335;">13
-14 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">        filteredList
-</span><span style="color:#888888;background-color:#313335;">15 </span><span style="color:#a9b7c6;background-color:#2b2b2b;">    }</span></pre>
+                <section class="code">
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceTests {
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {       <span class="fragment current-visible" style="color: red">Dig it</span>
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> calculateOrderForOneBeer() {
+        <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+        <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+        Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+        OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+        Order order = <span class="o">new</span> Order()
+        order.addItem(orderItem)
+
+        BigDecimal total = <span class="p">service</span>.checkout(order)
+
+        <span class="o">assert</span> total == <span class="b">3.50</span>
+        assertEquals(total, 3.50)
+    }
+}
+
+                    </span></pre>
+
                 </section>
 
 
@@ -1007,8 +1028,10 @@ function linkify( selector ) {
 
 		</div>
 
+        <!--<script src="js/jquery-1.11.0.js"></script>-->
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+        <!--<script src="js/chardinjs.js"></script>-->
 
 		<script>
 
