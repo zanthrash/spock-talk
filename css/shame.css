@@ -93,3 +93,8 @@ span.g {
 span.b {
     color: #7ca8c6;
 }
+
+#repeat {
+    -webkit-animation-iteration-count: infinate !important;
+
+}

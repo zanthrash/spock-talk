@@ -15,10 +15,11 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="css/shame.css"/>
         <!--<link rel="stylesheet" href="css/chardinjs.css"/>-->
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/opi.css" id="theme">
+        <link rel="stylesheet" href="css/animate.css"/>
+        <link rel="stylesheet" href="css/shame.css"/>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -100,10 +101,10 @@
                         <h3>What Is Spock?</h3>
                     </div>
 
-                    <p class="fragment">JUnit</p>
-                    <p class="fragment">RSpec</p>
-                    <p class="fragment">Cucumber</p>
-                    <p class="fragment">jMock</p>
+                    <p class="fragment z_pulse">JUnit</p>
+                    <p class="fragment z_pulse">RSpec</p>
+                    <p class="fragment z_pulse">Cucumber</p>
+                    <p class="fragment z_pulse">jMock</p>
 
                 </section>
 
@@ -113,11 +114,11 @@
                         <h3>Why Spock?</h3>
                     </div>
 
-                    <p class="fragment">Grails 2.3.x</p>
-                    <p class="fragment">Readability</p>
-                    <p class="fragment">Parametrization</p>
-                    <p class="fragment">Crazy Powerful Mocking</p>
-                    <p class="fragment">Extendable</p>
+                    <p class="fragment z_fadeInRightBig">Grails 2.3.x</p>
+                    <p class="fragment z_fadeInRightBig">Readability</p>
+                    <p class="fragment z_fadeInRightBig">Parametrization</p>
+                    <p class="fragment z_fadeInRightBig">Crazy Powerful Mocking</p>
+                    <p class="fragment z_fadeInRightBig">Extendable</p>
 
 
                     <aside class="notes">
@@ -177,7 +178,7 @@
 
                     <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
 <span class="y">@TestFor</span>(OrderService)
-<span class="o">class</span> OrderServiceTests <span class="highlight red">extends Specification</span>{
+<span class="o">class</span> OrderServiceTests <span id="repeat" class="highlight red pulse">extends Specification</span>{
 
     <span class="o">def</span> <span class="p">mockInventoryService</span>
     <span class="o">def</span> <span class="p">mockShippingCostService</span>
@@ -430,6 +431,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <section class="code" data-transition="none">
 
                     <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
@@ -472,6 +491,330 @@
                     <h4>Step 6: then block</h4>
                 </section>
 
+
+
+
+
+
+
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g fragment highlight-current-red    ">"Setup dependencies and create valid order"</span>
+            <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+            <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g fragment highlight-current-red">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g fragment highlight-current-red">"total should be = price * quantity + shipping cost"</span>
+            <span class="o">assert</span> total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+                    <h4>Step 7: document blocs</h4>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g fragment highlight-current-red">"Setup dependencies and create valid order"</span>
+            <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+            <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g">"total should be = price * quantity + shipping cost"</span>
+            <span class="o">assert</span> total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+                    <h4>Step 8: 'and' blocks</h4>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g" >"Setup dependencies"</span>
+            <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+            <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+        and: <span class="g fragment highlight-current-red">"Create valid order"</span>
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g">"total should be = price * quantity + shipping cost"</span>
+            <span class="o">assert</span> total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+                    <h4>Step 8: 'and' blocks</h4>
+                </section>
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <div class="left bottom-50">
+                        <h3>Expect Block</h3>
+                    </div>
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="o">void</span> <span class="g">"add 2 things together"</span> () {
+        expect:
+            <span class="b">1</span> + <span class="b">1</span> = <span class="b">2</span>
+            <span class="g">'Bat'</span> + <span class="g">'man'</span> == <span class="g">'Bat man'</span>
+            <span class="b">99</span> + <span class="b">1</span> == <span class="b">100</span>
+    }
+                    </span></pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <div class="left bottom-50">
+                        <h3>Expect Block</h3>
+                    </div>
+
+                    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+    --Output from test adding things--
+    | Failure:  test adding things
+    |  Condition not satisfied:
+
+    <span class="highlight red">'Bat'</span> + <span class="highlight red">'man'</span> == <span class="highlight red">'Bat man'</span>
+    |             |
+    Batman        <span class="g">false</span>
+    <span class="g">1</span> difference (85% similarity)
+    Bat(-)man
+    Bat( )man
+
+                    </span></pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h3>Parametrized Testing</h3>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+               <section class="top">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing</h4>
+                    </div>
+
+
+    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="o">void</span> <span class="g">"adding things"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>]
+        }
+    </span>
+    </pre>
+               </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing</h4>
+                    </div>
+
+                    <img class="stretch" src="images/parameterizedOutputListPipe_noUnroll.png" alt=""/>
+                </section>
+                
+                
+<!--###################################################################################################################################################################################-->
+
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Unroll</h4>
+                    </div>
+
+
+    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>  <i class="fa fa-lg fa-long-arrow-left fragment current-visible z_fadeInRightBig8" data-fragment-index="0" style="color:red"></i>
+        <span class="o">void</span> <span class="g">"adding things"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section class="top">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Basic Unroll</h4>
+                    </div>
+
+                    <img class="stretch" src="images/paramertizedOutputListPipeWithBaseUnroll.png" alt=""/>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Advanced Unroll</h4>
+                    </div>
+
+
+    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll(<span class="g">"#a + #b = #c"</span>)</span>  <i class="fa fa-lg fa-long-arrow-left fragment current-visible z_fadeInRightBig8" data-fragment-index="0" style="color:red"></i>
+        <span class="o">void</span> <span class="g">"adding things"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Advanced Unroll</h4>
+                    </div>
+
+
+    <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>
+        <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() { <i class="fa fa-lg fa-long-arrow-left fragment current-visible z_fadeInRightBig8" data-fragment-index="0" style="color:red"></i>
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Advanced Unroll</h4>
+                    </div>
+
+                    <img class="stretch" src="images/parameterizedOutputListAdvanceUnroll.png" alt=""/>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Tables</h4>
+                    </div>
+
+                        <pre style="line-height: 100%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>
+        <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() { <i class="fa fa-lg fa-long-arrow-left fragment current-visible z_fadeInRightBig8" data-fragment-index="0" style="color:red"></i>
+            expect:
+                a + b == c
+
+            where:
+                a     | b     | c
+                <span class="b">1</span>     | <span class="b">1</span>     | <span class="b">2</span>
+                <span class="g">'Bat'</span> | <span class="g">'man'</span> | <span class="g">'Bat man'</span>
+                <span class="b">100</span>   | <span class="b">1</span>     | <span class="b">101</span>
+        }
+    </span>
+    </pre>
+                </section>
+                </section>
 
                 <section class="top">
                     <div class="left bottom-60">
@@ -1333,7 +1676,7 @@ function linkify( selector ) {
 
 		</div>
 
-        <!--<script src="js/jquery-1.11.0.js"></script>-->
+        <script src="js/jquery-1.11.0.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
         <!--<script src="js/chardinjs.js"></script>-->
@@ -1366,6 +1709,24 @@ function linkify( selector ) {
 				]
 
 			});
+
+            Reveal.addEventListener( 'fragmentshown', function( event ) {
+                var element = $(event.fragment);
+                var hasPulse = element.hasClass('z_pulse');
+                if (hasPulse) element.addClass('animated pulse');
+
+                var hasFadeInRightBig = element.hasClass('z_fadeInRightBig');
+                if (hasFadeInRightBig) element.addClass('animated fadeInRightBig');
+            } );
+
+            Reveal.addEventListener( 'fragmenthidden', function( event ) {
+                var element = $(event.fragment);
+                var hasPulse = element.hasClass('z_pulse');
+                if (hasPulse) element.removeClass('animated pulse')
+
+                var hasFadeInRightBig = element.hasClass('z_fadeInRightBig');
+                if (hasFadeInRightBig) element.removeClass('animated fadeInRightBig');
+            } );
 
 
 		</script>
