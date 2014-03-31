@@ -25,7 +25,7 @@ section.top {
 
 section.code {
     width: 1100px !important;
-    top: -450px !important;
+    top: -500px !important;
     left: -600px !important;
 }
 
@@ -94,7 +94,10 @@ span.b {
     color: #7ca8c6;
 }
 
+.strike {
+    text-decoration: line-through;
+}
+
 #repeat {
     -webkit-animation-iteration-count: infinate !important;
-
 }
