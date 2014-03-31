@@ -2109,10 +2109,84 @@
 
 
 <!--###################################################################################################################################################################################-->
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Groovy Specific Mocks</h4>
+                    </div>
 
+                    <div class="bottom-50">
+                        <div class="fragment">GroovyMock</div>
+                        <div class="fragment">GroovyStub</div>
+                        <div class="fragment">GroovySpy</div>
+                    </div>
+
+                    <aside class="notes">
+                        Spies <br>
+                        ALL method calls passthrough to the actual method<br/>
+                    </aside>
+
+                </section>
 <!--###################################################################################################################################################################################--><!--###################################################################################################################################################################################-->
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Groovy Specific Mocks <i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Uses</span></h4>
+                        <h4>Mocking All Instances</h4>
+                    </div>
+
+                    <div class="bottom-50">
+                        <span class="o">def</span> <span class="p">anyFoo</span> = GroovyMock(Foo, <span class="fragment highlight-current-red">global: true</span>)
+                    </div>
+
+                    <aside class="notes">
+                    </aside>
+
+                </section>
 <!--###################################################################################################################################################################################-->
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Groovy Specific Mocks <i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Uses</span></h4>
+                        <h4>Mocking Constructors</h4>
+                    </div>
+
+                    <div class="bottom-50 left">
+                        <div>
+                            <span class="o">def</span> <span class="p">anyFoo</span> = GroovyMock(Foo, <span class="fragment highlight-current-red">global: true</span>)
+                        </div>
+                        <div class="fragment">
+                            <span class="b">1</span> * <span class="o">new</span> Foo(<span class="g">"myFoo"</span>)
+                        </div>
+
+                    </div>
+
+                    <aside class="notes">
+                    </aside>
+
+                </section>
 <!--###################################################################################################################################################################################-->
+                <section data-transition="none" class="top">
+                    <div class="left bottom-50">
+                        <h3>Interactions</h3>
+                        <h4>Groovy Specific Mocks <i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Uses</span></h4>
+                        <h4>Mocking Static Methods</h4>
+                    </div>
+
+                    <div class="bottom-50 left">
+                        <div>
+                            <span class="o">def</span> <span class="p">anyFoo</span> = GroovyStub(Foo, <span class="fragment highlight-current-red">global: true</span>)
+                        </div>
+                        <div class="fragment">
+                            Foo.PI() >> <span class="b">3.333</span>
+                        </div>
+
+                    </div>
+
+                    <aside class="notes">
+                    </aside>
+
+                </section>
 <!--###################################################################################################################################################################################-->
 <!--###################################################################################################################################################################################-->
 <!--###################################################################################################################################################################################-->
