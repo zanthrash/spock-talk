@@ -101,3 +101,7 @@ span.b {
 #repeat {
     -webkit-animation-iteration-count: infinate !important;
 }
+
+.camel {
+    text-transform: none !important;
+}

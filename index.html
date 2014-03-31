@@ -2188,8 +2188,374 @@
 
                 </section>
 <!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>
+                        Extensions
+                    </h2>
+                </section>
 <!--###################################################################################################################################################################################-->
+                <section >
+                    <h2 class="camel">
+                        <span class="y">@Unroll</span>
+                    </h2>
+                </section>
 <!--###################################################################################################################################################################################-->
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Ignore</span>
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+               <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:24pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Ignore</span>
+        def <span class="g">"my test"</span>() {
+            ...
+        }
+                        </span>
+                    </pre>
+               </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:24pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+        <span class="y">@Ignore</span>(<span class="g">"Unstable test"</span>)
+        def <span class="g">"my test"</span>() {
+            ...
+        }
+                        </span>
+                    </pre>
+               </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:24pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Ignore</span>
+        <span class="o">class</span> FooSpec <span class="o">extends</span> Specification {
+            ...
+        }
+                        </span>
+                    </pre>
+               </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@IgnoreRest</span>
+                    </h2>
+
+                    <aside class="notes">
+                        Method ONLY annotation
+                    </aside>
+
+                </section>
+<!--###################################################################################################################################################################################-->
+
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:24pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+        <span class="y">@IgnoreRest</span>
+        def <span class="g">"only run me"</span>() {
+            ...
+        }
+                        </span>
+                    </pre>
+
+
+                    <aside class="notes">
+                        Method ONLY annotation
+                    </aside>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@IgnoreIf</span>
+                    </h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="y">@IgnoreIf</span>({System.<span class="p">getProperty</span>(<span class="g">'os.name'</span>).contains(<span class="g">'X'</span>)})
+def <span class="g">"osx no bueno"</span>() {
+    ...
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section >
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="y">@IgnoreIf</span>({System.<span class="p">getProperty</span>(<span class="g">'os.name'</span>).contains(<span class="g">'X'</span>)})
+<span class="o">class</span> NoOSXSpec <span class="o">extends</span> Specification() {
+    ...
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Require</span>
+                    </h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="y">@Require</span>({System.<span class="p">getProperty</span>(<span class="g">'os.name'</span>).contains(<span class="g">'X'</span>)})
+def <span class="g">"only for OS X"</span>() {
+    ...
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Stepwise</span>
+                    </h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="y">@Stepwise</span>
+<span class="o">class</span> ExecuteInOrderSpeck<span class="o">extends</span> Specification() {
+
+    def <span class="g">"I run first"</span>() {
+        ...
+    }
+
+    def <span class="g">"I run next"</span>() {
+        ...
+    }
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Timeout</span>(<span class="b">10</span>)
+                    </h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h5 class="camel">
+                        <span class="y">@Timeout</span>(value = <span class="b">100</span>, unit = TimeUnit.<span class="b">MILLISECONDS</span>)
+                    </h5>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Use</span>
+                    </h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="o">class</span> ListExtensions () {
+    static avg(List list) { list.sum() / list.size() }
+}
+
+
+
+<span class="o">class</span> MySpec <span class="o">extneds</span> Specification() {
+
+    <span class="y">@Use</span>(ListExtensions)
+    <span class="o">def</span> <span class="g">"averaging contents of a list"</span>() {
+        expect:
+            [<span class="b">1, 2, 3</span>].avg() == <span class="b">2</span>
+    }
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h3 class="camel">
+                        <span class="y">@ConfineMetaClassChange</span>
+                    </h3>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="code">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="o">class</span> MySpec <span class="o">extends</span> Specification() {
+
+    @<span class="y">ConfineMetaClassChanges</span>([String])
+    <span class="o">def</span> "mucking with string"() {
+        when:
+            String.<span class="o">metaClass</span>.toUpperCase = { "<span class="g">FOO</span>${<span class="o">delegate</span>}" }
+        then:
+            <span class="g">"Baz"</span>.toUpperCase() == <span class="g">"FOOBaz"</span>
+    }
+
+
+
+    <span class="o">def</span> <span class="g">"more string stuff"</span>() {
+        when:
+            String results = <span class="g">"foo"</span>.toUpperCase()
+        then:
+            results == <span class="g">"FOO"</span>
+    }
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@AutoCleanup</span>
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+    <span class="o">class</span> MySpec <span class="o">extends</span> Specification() {
+        <span class="y">@AutoCleanup</span> BufferedReader xmlFileReader
+        <span class="y">@AutoCleanup</span>(<span class="g">'dispose'</span>) mockDB
+
+        <span class="o">def</span> startup() {
+            xmlFile = <span class="o">new</span> File(<span class="g">'foo.xml'</span>).newReader()
+            mockDB = <span class="o">new</span> MockDB()
+        }
+    }
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h2 class="camel">
+                        <span class="y">@Shared</span>
+                    </h2>
+                </section>
+
+
+<!--###################################################################################################################################################################################-->
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="o">class</span> MySpec <span class="o">extends</span> Specification() {
+
+    <span class="y">@Shared</span> BufferedReader xmlFileReader =
+                    <span class="o">new</span> File(<span class="g">'foo.xml'</span>).newReader()
+
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="o">class</span> MySpec <span class="o">extends</span> Specification() {
+
+    BufferedReader <span class="p">xmlFileReader</span>
+
+    <span class="o">def</span> setupSpec() {
+        <span class="p">xmlFileReader</span> = <span class="o">new</span> File(<span class="g">'foo.xml'</span>).newReader()
+    }
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h4 class="camel">
+                        <span class="y">@Issue</span>(<span class="g">'http://my.jira.com/BUG-1'</span>)
+                    </h4>
+                </section>
+<!--###################################################################################################################################################################################-->
+
+                <section>
+                    <h2>
+                        Custom Extensions
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+
+
 			</div>
 
 		</div>
