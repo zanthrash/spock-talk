@@ -50,6 +50,14 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+                <!--<section >-->
+                    <!--<img class="stretch" src="images/solar_system.JPG" alt=""/>-->
+                <!--</section>-->
+                <!--<section >-->
+                    <!--<img class='stretch' src="images/solar_system_wtf.png" alt=""/>-->
+                <!--</section>-->
+
 				<section>
 					<h1>Spock Testing</h1>
 					<h3 data-intro="Subtitle" data-position="bottom">Soup to Nuts</h3>
@@ -70,17 +78,32 @@
                     <aside class="notes">
                     </aside>
 				</section>
+<!--###################################################################################################################################################################################-->
+                <!--<section>-->
+                    <!--<h2 class="camel">Bridges & Software</h2>-->
+                <!--</section>-->
 
-                <section>
+<!--&lt;!&ndash;###################################################################################################################################################################################&ndash;&gt;-->
+                <!---->
+                <!--<section class="top">-->
+                    <!--<div class="left bottom-50">-->
+                        <!--<h3 class="camel">Bridges</h2>-->
+                    <!--</div>-->
+                    <!---->
+                <!--</section>-->
 
-                    <div class="image-box">
-                        <h3 class="image-box-overlay">Testing is Important</h3>
-                        <img class="image-box-media" height="600" src="images/tacoma_narrows_bridge.gif" alt="tacoma narrows bridge"/>
-                    </div>
+<!--###################################################################################################################################################################################-->
 
-                </section>
+                <!--<section>-->
 
+                    <!--<div class="image-box">-->
+                        <!--&lt;!&ndash;<h3 class="image-box-overlay">Testing is Important</h3>&ndash;&gt;-->
+                        <!--<img class="image-box-media" height="600" src="images/tacoma_narrows_bridge.gif" alt="tacoma narrows bridge"/>-->
+                    <!--</div>-->
 
+                <!--</section>-->
+
+<!--###################################################################################################################################################################################-->
                 <section class="top">
                     <div class="left bottom-50">
                         <h3>What Is Spock?</h3>
@@ -94,8 +117,12 @@
                         What makes it stand out from the crowd is its <span class="highlight blue">beautiful and highly expressive specification language</span> .
                     </blockquote>
 
+                    <div style="float: right">
+                        ~ Peter Niederwieser <br/>
+                          Spock Author
+                    </div>
                 </section>
-
+<!--###################################################################################################################################################################################-->
                 <section class="top">
                     <div class="left bottom-50">
                         <h3>What Is Spock?</h3>
@@ -107,7 +134,7 @@
                     <p class="fragment z_pulse">jMock</p>
 
                 </section>
-
+<!--###################################################################################################################################################################################-->
 
                 <section class="top">
                     <div class="left bottom-50">
@@ -118,7 +145,7 @@
                     <p class="fragment z_fadeInRightBig">Readability</p>
                     <p class="fragment z_fadeInRightBig">Parametrization</p>
                     <p class="fragment z_fadeInRightBig">Crazy Powerful Mocking</p>
-                    <p class="fragment z_fadeInRightBig">Extendable</p>
+                    <p class="fragment z_fadeInRightBig">Extensible</p>
 
 
                     <aside class="notes">
@@ -128,11 +155,113 @@
                     </aside>
                 </section>
 
+<!--###################################################################################################################################################################################-->
 
+                <section>
+                    <h2>Some Terminology</h2>
+                </section>
 
+<!--###################################################################################################################################################################################-->
 
+                <section>
+
+                    <h3>Fixture / Specification</h3>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="o">class</span> OrderServiceSpec <span class="o">extends</span> Specification {
+        ...
+    }
+                        </span>
+                    </pre>
+
+                    <aside class="notes">
+                        any Java or Groovy class that extends Specification
+                    </aside>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+
+                    <h3>Fixture Methods</h3>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="o">class</span> OrderServiceSpec <span class="o">extends</span> Specification {
+
+        <span class="o">def</span> setup() { ... }
+        <span class="o">def</span> cleanup() { ... }
+        <span class="o">def</span> setupSpec() { ... }
+        <span class="o">def</span> cleanupSpec() { ... }
+
+    }
+                        </span>
+                    </pre>
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section>
+
+                    <h3>Feature Methods</h3>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="o">class</span> OrderServiceSpec <span class="o">extends</span> Specification {
+
+        <span class="o">def</span> <span class="g">"this is an actual test"</span>() {
+            ...
+        }
+
+    }
+                        </span>
+                    </pre>
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+
+                    <h3>Blocks</h3>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="o">class</span> OrderServiceSpec <span class="o">extends</span> Specification {
+
+        <span class="o">def</span> <span class="g">"this is an actual test"</span>() {
+            setup:
+            given:
+            when:
+            then:
+            expect:
+            where:
+            cleanup:
+            and:
+        }
+
+    }
+                        </span>
+                    </pre>
+
+                    <aside class="notes">
+                    </aside>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>Convert</h2>
+                </section>
+
+<!--###################################################################################################################################################################################-->
                 <!-- Layout of Vanilla -->
-                <section class="code">
+                <section class="code" data-transition="none">
 
                     <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
 <span class="y">@TestFor</span>(OrderService)
@@ -203,7 +332,7 @@
 
         BigDecimal total = <span class="p">service</span>.checkout(order)
 
-         total == <span class="b">3.50</span>
+        <span class="o">assert</span> total == <span class="b">3.50</span>
         assertEquals(total, 3.50)
 
         <span class="p">mockInventoryService</span>.verify()
@@ -246,7 +375,7 @@
 
         BigDecimal total = <span class="p">service</span>.checkout(order)
 
-         total == <span class="b">3.50</span>
+        <span class="o">assert</span> total == <span class="b">3.50</span>
         assertEquals(total, 3.50)
 
         <span class="p">mockInventoryService</span>.verify()
@@ -291,7 +420,7 @@
 
         BigDecimal total = <span class="p">service</span>.checkout(order)
 
-         total == <span class="b">3.50</span>
+        <span class="o">assert</span> total == <span class="b">3.50</span>
         assertEquals(total, 3.50)
 
         <span class="p">mockInventoryService</span>.verify()
@@ -333,7 +462,7 @@
 
         BigDecimal total = <span class="p">service</span>.checkout(order)
 
-         total == <span class="b">3.50</span>
+        <span class="o">assert</span> total == <span class="b">3.50</span>
         assertEquals(total, 3.50)
 
         <span class="p">mockInventoryService</span>.verify()
@@ -343,6 +472,8 @@
                     </span></pre>
                     <h4>Step 4: given block</h4>
                 </section>
+
+<!--###################################################################################################################################################################################-->
 
                 <section class="code" data-transition="none">
 
@@ -375,7 +506,7 @@
         <span class="highlight red">when:</span>
             BigDecimal total = <span class="p">service</span>.checkout(order)
 
-         total == <span class="b">3.50</span>
+        <span class="o">assert</span> total == <span class="b">3.50</span>
         assertEquals(total, 3.50)
 
         <span class="p">mockInventoryService</span>.verify()
@@ -386,6 +517,7 @@
                     <h4>Step 5: when block</h4>
                 </section>
 
+<!--###################################################################################################################################################################################-->
 
                 <section class="code" data-transition="none">
 
@@ -419,9 +551,53 @@
             BigDecimal total = <span class="p">service</span>.checkout(order)
 
         <span class="highlight red">then:</span>
-             total == <span class="b">3.50</span>
+            <span class="o">assert</span> total == <span class="b">3.50</span>
             assertEquals(total, 3.50)
-            <span class="p">mockInventoryService</span>.verify() <span class="fragment highlight red">== null</span>
+            <span class="p">mockInventoryService</span>.verify()
+    }
+}
+
+                    </span></pre>
+                    <h4>Step 6: then block </h4>
+                </section>
+
+
+<!--###################################################################################################################################################################################-->
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given:
+            <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+            <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when:
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+
+        <span class="highlight red">then:</span>
+            <span class="strike highlight red">assert</span> total == <span class="b">3.50</span>
+            assertEquals(total, 3.50)
+            <span class="p">mockInventoryService</span>.verify()
     }
 }
 
@@ -430,25 +606,51 @@
                 </section>
 
 
+<!--###################################################################################################################################################################################-->
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">def</span> <span class="p">mockInventoryService</span>
+    <span class="o">def</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = mockFor(InventoryService)
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()
+        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService)
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock()
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given:
+            <span class="p">mockInventoryService</span>.demand.removeFromStock(<span class="b">2</span>) { a -&gt; }
+            <span class="p">mockShippingCostService</span>.demand.calculate(<span class="b">1</span>) { Order order -&gt; <span class="b">1.00</span>}
+
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when:
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+
+        <span class="highlight red">then:</span>
+            total == <span class="b">3.50</span>
+            assertEquals(total, 3.50)
+            <span class="p">mockInventoryService</span>.verify() <span class="highlight red">== null</span>
+    }
+}
+
+                    </span></pre>
+                    <h4>Step 6: then block</h4>
+                </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <!--###################################################################################################################################################################################-->
                 <section class="code" data-transition="none">
 
                     <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
@@ -482,7 +684,7 @@
             <span class="highlight red">mockInventoryService.verify()</span>
 
         <span class="highlight red">then:</span>
-             total == <span class="b">3.50</span>
+            total == <span class="b">3.50</span>
             assertEquals(total, 3.50)
     }
 }
@@ -493,7 +695,7 @@
 
 
 
-
+<!--###################################################################################################################################################################################-->
 
 
 
@@ -530,7 +732,7 @@
             mockInventoryService.verify()
 
         then: <span class="g fragment highlight-current-red">"total should be = price * quantity + shipping cost"</span>
-             total == <span class="b">3.50</span>
+            total == <span class="b">3.50</span>
     }
 }
 
@@ -799,6 +1001,77 @@
                         <h4>Parametrized Testing: Tables</h4>
                     </div>
 
+
+    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>
+        <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Tables</h4>
+                    </div>
+
+
+    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>
+        <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>, <span class="g">"Foo"</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>, <span class="b">1</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>, <span class="g">Foo1</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Tables</h4>
+                    </div>
+
+
+    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+        <span class="y">@Unroll</span>
+        <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() {
+            expect:
+                a + b == c
+
+            where:
+                a << [<span class="b">1</span>, <span class="g">'Bat'</span>, <span class="b">100</span>, <span class="g">"Foo"</span>, <span class="g">"2"</span>]
+                b << [<span class="b">1</span>, <span class="g">'man'</span>, <span class="b">1</span>, <span class="b">1</span>, <span class="g">"99"</span>]
+                c << [<span class="b">2</span>, <span class="g">'Bat man'</span>, <span class="b">101</span>, <span class="g">Foo1</span>, <span class="g">"299"</span>]
+        }
+    </span>
+    </pre>
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+
+
+                <section class="top" data-transition="none">
+                    <div class="left bottom-50">
+                        <h4>Parametrized Testing: Tables</h4>
+                    </div>
+
                         <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
         <span class="y">@Unroll</span>
         <span class="o">void</span> <span class="g">"#a + #b = #c"</span>() {
@@ -858,7 +1131,7 @@
     <span class="o">void</span> setup() {
         <span class="p">mockInventoryService</span> = mockFor(InventoryService)                   <i class="fa fa-lg fa-long-arrow-left fragment current-visible " data-fragment-index="1" style="color:red"></i>
         <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.createMock()       <i class="fa fa-lg fa-long-arrow-left fragment current-visible" data-fragment-index="1" style="color:red"></i>
-        <span class="p">mockShippingCalculatorService</span> = mockFor(ShippingCalculatorService) <i class="fa fa-lg fa-long-arrow-left fragment current-visible" data-fragment-index="1" style="color:red"></i>
+        <span class="p">mockShippingCostService</span> = mockFor(ShippingCalculatorService)       <i class="fa fa-lg fa-long-arrow-left fragment current-visible" data-fragment-index="1" style="color:red"></i>
         <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.createMock() <i class="fa fa-lg fa-long-arrow-left fragment current-visible" data-fragment-index="1" style="color:red"></i>
     }
 
@@ -1006,9 +1279,9 @@
     <span class="y">@Before</span>
     <span class="o">void</span> setup() {
         <span class="p">mockInventoryService</span> = Mock()
-        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.<span class="strike">createMock()</span>
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>.<span class="strike highlight red">createMock()</span>
         <span class="p">mockShippingCalculatorService</span> = Mock()
-        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.<span class="strike">createMock()</span>
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>.<span class="strike highlight red">createMock()</span>
     }
 
     <span class="y">@Test</span>
@@ -1078,7 +1351,7 @@
             mockInventoryService.verify()
 
         then: <span class="g">"total should be = price * quantity + shipping cost"</span>
-             total == <span class="b">3.50</span>
+            total == <span class="b">3.50</span>
     }
 }
 
@@ -1210,8 +1483,8 @@
     <span class="y">@Test</span>
     <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
         given: <span class="g" >"Setup dependencies"</span>
-            <span class="b">2</span> * mockInventoryService.removeFromStock(_)
-            <span class="b">1</span> * mockShippingCostService.demand.calculate(_ as Order) >> <span class="b">1.00</span>
+            <span class="b">2</span> * mockInventoryService.removeFromStock() <span class="highlight red">{ a -> }</span>
+            <span class="b">1</span> * mockShippingCostService.calculate(){ Order order -&gt; <span class="b">1.00</span>}
 
         and: "Create valid order"
             Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
@@ -1225,6 +1498,136 @@
 
         then: <span class="g">"total should be = price * quantity + shipping cost"</span>
              total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">InventoryService</span> <span class="p">mockInventoryService</span>
+    <span class="o">InventoryService</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = Mock()
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>
+        <span class="p">mockShippingCalculatorService</span> = Mock()
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g" >"Setup dependencies"</span>
+            <span class="b">2</span> * mockInventoryService.removeFromStock(<span class="highlight red">_</span>)
+            <span class="b">1</span> * mockShippingCostService.calculate(){ Order order -&gt; <span class="b">1.00</span>}
+
+        and: "Create valid order"
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g">"total should be = price * quantity + shipping cost"</span>
+             total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">InventoryService</span> <span class="p">mockInventoryService</span>
+    <span class="o">InventoryService</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = Mock()
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>
+        <span class="p">mockShippingCalculatorService</span> = Mock()
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g" >"Setup dependencies"</span>
+            <span class="b">2</span> * mockInventoryService.removeFromStock(_)
+            <span class="b">1</span> * mockShippingCostService.calculate()<span class="highlight red">{ Order order -&gt; <span class="b">1.00</span>}</span>
+
+        and: "Create valid order"
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g">"total should be = price * quantity + shipping cost"</span>
+             total == <span class="b">3.50</span>
+    }
+}
+
+                    </span></pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+
+                <section class="code" data-transition="none">
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="y">@TestFor</span>(OrderService)
+<span class="o">class</span> OrderServiceSpec extends Specification{
+
+    <span class="o">InventoryService</span> <span class="p">mockInventoryService</span>
+    <span class="o">InventoryService</span> <span class="p">mockShippingCostService</span>
+
+    <span class="y">@Before</span>
+    <span class="o">void</span> setup() {
+        <span class="p">mockInventoryService</span> = Mock()
+        <span class="p">service.inventoryService</span> = <span class="p">mockInventoryService</span>
+        <span class="p">mockShippingCalculatorService</span> = Mock()
+        <span class="p">service.shippingCostService</span> = <span class="p">mockShippingCostService</span>
+    }
+
+    <span class="y">@Test</span>
+    <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
+        given: <span class="g" >"Setup dependencies"</span>
+            <span class="b">2</span> * mockInventoryService.removeFromStock(_)
+            <span class="b">1</span> * mockShippingCostService.calculate(<span class="highlight red">_ as Order</span>) <span class="highlight red">>> 1.00</span>
+
+        and: "Create valid order"
+            Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
+            OrderItem orderItem = <span class="o">new</span> OrderItem(item: beer, quantity:<span class="b">1</span>)
+            Order order = <span class="o">new</span> Order()
+            order.addItem(orderItem)
+
+        when: <span class="g">"checkout the order"</span>
+            BigDecimal total = <span class="p">service</span>.checkout(order)
+            mockInventoryService.verify()
+
+        then: <span class="g">"total should be = price * quantity + shipping cost"</span>
+            total == <span class="b">3.50</span>
     }
 }
 
@@ -1267,7 +1670,7 @@
     <span class="o">void</span> <span class="g">"calculate order for one beer"</span>() {
         given: <span class="g" >"Setup dependencies"</span>
             <span class="b">1</span> * mockInventoryService.removeFromStock(_)
-            <span class="b">1</span> * mockShippingCostService.demand.calculate(_) >> <span class="b">1.00</span>
+            <span class="b">1</span> * mockShippingCostService.calculate(_ as Order) >> <span class="b">1.00</span>
 
         and: "Create valid order"
             Item beer = <span class="o">new</span> Item(name: <span class="g">'Beer'</span>, price: <span class="b">2.50</span>)
@@ -1277,10 +1680,10 @@
 
         when: <span class="g">"checkout the order"</span>
             BigDecimal total = <span class="p">service</span>.checkout(order)
-            <span style="text-decoration: line-through">mockInventoryService.verify()</span>
+            <span class="strike highlight red">mockInventoryService.verify()</span>
 
         then: <span class="g">"total should be = price * quantity + shipping cost"</span>
-             total == <span class="b">3.50</span>
+            total == <span class="b">3.50</span>
     }
 }
 
@@ -1326,7 +1729,7 @@
             BigDecimal total = <span class="p">service</span>.checkout(order)
 
         then: <span class="g">"total should be = price * quantity + shipping cost"</span>
-             total == <span class="b">3.50</span>
+            total == <span class="b">3.50</span>
     }
 }
 
@@ -1402,6 +1805,19 @@
 
 
 <!--###################################################################################################################################################################################-->
+                <section class="top">
+                    <div class="left bottom-60">
+                        <h3>Interactions</h3>
+                    </div>
+
+                    <div style="margin-top: 150px;">
+                        <h3 class="highlight green">lenient by default</h3>
+                    </div>
+
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
 
                 <section class="top">
                     <div class="left bottom-60">
@@ -1414,10 +1830,11 @@
                     </blockquote>
 
                     <blockquote>
-                        One where we <b class="highlight blue">do not care</b> what the return
-                        value of the mocked collaborator is, only that it <b class="highlight blue">was called</b> by our SUT
+                        One where we <b class="highlight green">do not care</b> what the return
+                        value of the mocked collaborator is, only that it <b class="highlight green">was called</b> by our SUT
                     </blockquote>
                 </section>
+
 
 <!--###################################################################################################################################################################################-->
 
@@ -1430,8 +1847,8 @@
                         A substitute for a collaborator of the SUT.  <br>
                     </blockquote>
                     <blockquote>
-                        One where we <b class="highlight blue">do care</b> what the return
-                        value of the mocked collaborator is, and want to have <b class="highlight blue">controller</b> over it
+                        One where we <b class="highlight green">do care</b> what the return
+                        value of the mocked collaborator is, and want to have <b class="highlight green">control</b> whats returned
                     </blockquote>
 
                 </section>
@@ -1446,8 +1863,8 @@
                         A wrapper around a collaborator of the SUT.  <br>
                     </blockquote>
                     <blockquote>
-                        One where we want to passthrough to an actual <b class="highlight blue">object</b> but want to also
-                        <b class="highlight blue"> track that it was called.</b>
+                        One where we want to <b class="highlight green">passthrough</b> to an actual <b class="highlight green">object</b> but want to also
+                        <b class="highlight green"> track that it was called.</b>
                     </blockquote>
 
                 </section>
@@ -1457,34 +1874,34 @@
                 <!--
                     Creating Mocks
                 -->
-                <section class="top">
-                    <div class="left bottom-50">
-                        <h3>Interactions</h3>
-                        <h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Dynamic</span></h4>
-                    </div>
+                <!--<section class="top">-->
+                    <!--<div class="left bottom-50">-->
+                        <!--<h3>Interactions</h3>-->
+                        <!--<h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Dynamic</span></h4>-->
+                    <!--</div>-->
 
 
-                    <p><span class="highlight green">def</span> fooService = Mock(FooService)</p>
-                </section>
+                    <!--<p><span class="highlight green">def</span> fooService = Mock(FooService)</p>-->
+                <!--</section>-->
 
-                <section class="top" data-transition="none">
-                    <div class="left bottom-50">
-                        <h3>Interactions</h3>
-                        <h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Static</span></h4>
-                    </div>
-
-
-                    <p><span class="highlight green">FooService</span> fooService = Mock()</p>
+                <!--<section class="top" data-transition="none">-->
+                    <!--<div class="left bottom-50">-->
+                        <!--<h3>Interactions</h3>-->
+                        <!--<h4>Creating Mocks <i class="fa fa-caret-right"></i> <span class="highlight red">Static</span></h4>-->
+                    <!--</div>-->
 
 
-                    <aside class="notes">
-                        <ul>
-                            <li>Mock() is a method on MockingApi</li>
-                            <li>MockingApi partent class to Specification</li>
-                            <li>Prefer the static way -- better IDE support</li>
-                        </ul>
-                    </aside>
-                </section>
+                    <!--<p><span class="highlight green">FooService</span> fooService = Mock()</p>-->
+
+
+                    <!--<aside class="notes">-->
+                        <!--<ul>-->
+                            <!--<li>Mock() is a method on MockingApi</li>-->
+                            <!--<li>MockingApi partent class to Specification</li>-->
+                            <!--<li>Prefer the static way -- better IDE support</li>-->
+                        <!--</ul>-->
+                    <!--</aside>-->
+                <!--</section>-->
 
 
 
@@ -1505,7 +1922,7 @@
                 <section class="top" data-transition="none">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Cardinality</h4>
+                        <h4>Parts <i class="fa fa-caret-right highlight red"></i> Cardinality</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1517,7 +1934,7 @@
                 <section class="top" data-transition="none">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Target Constraint</h4>
+                        <h4>Parts <i class="fa fa-caret-right highlight red"></i> Target Constraint</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1529,7 +1946,7 @@
                 <section class="top" data-transition="none">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Method Constraint</h4>
+                        <h4>Parts <i class="fa fa-caret-right highlight red"></i> Method Constraint</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1541,7 +1958,7 @@
                 <section class="top" data-transition="none">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Argument Constraints</h4>
+                        <h4>Parts <i class="fa fa-caret-right highlight red"></i> Argument Constraints</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1552,7 +1969,7 @@
                 <section class="top" data-transition="none">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Parts <i class="fa fa-caret-right highlight-red"></i> Stub Return Value</h4>
+                        <h4>Parts <i class="fa fa-caret-right highlight red"></i> Stub Return Value</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1569,7 +1986,7 @@
                 <section data-transition="linear" data-background-transition="slide" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardinality <i class="fa fa-caret-right highlight-red"></i> Integer</h4>
+                        <h4>Cardinality <i class="fa fa-caret-right highlight red"></i> Integer</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1587,7 +2004,7 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardinality <i class="fa fa-caret-right highlight-red"></i> Integer</h4>
+                        <h4>Cardinality <i class="fa fa-caret-right highlight red"></i> Integer</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1603,7 +2020,7 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardinality <i class="fa fa-caret-right highlight-red"></i> Ranges</h4>
+                        <h4>Cardinality <i class="fa fa-caret-right highlight red"></i> Ranges</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1621,7 +2038,7 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardinality <i class="fa fa-caret-right highlight-red"></i> Ranges</h4>
+                        <h4>Cardinality <i class="fa fa-caret-right highlight red"></i> Ranges</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1639,7 +2056,7 @@
                 <section data-transition="none" class="top">
                     <div class="left bottom-50">
                         <h3 >Interactions </h3>
-                        <h4>Cardinality <i class="fa fa-caret-right highlight-red"></i> Ranges</h4>
+                        <h4>Cardinality <i class="fa fa-caret-right highlight red"></i> Ranges</h4>
                     </div>
 
                     <p class="bottom-40">
@@ -1690,7 +2107,7 @@
                     INTERACTIONS : TARGET CONSTRAINT
                 -->
 
-                <section data-transition="linear" data-background-transition="slide" class="top">
+                <section data-transition="none" data-background-transition="slide" class="top">
                     <div class="left bottom-50">
                         <h3>Interactions</h3>
                         <h4>Target Constraints <i class="fa fa-caret-right highlight red"></i> <span class="highlight red">Explicit</span> </h4>
@@ -1825,7 +2242,7 @@
                     </div>
 
                     <p class="bottom-50">
-                        1 * mockTarget.methodName( <span class="box highlight-red">_*</span> )
+                        1 * mockTarget.methodName( <span class="box highlight-red">*_</span> )
                     </p>
 
                     <ul>
@@ -1926,7 +2343,7 @@
                     <ul>
                         <li class="fragment">Completely valid...</li>
                         <li class="fragment">Completely useless...</li>
-                        <li class="fragment"><h4>Don't do this!!!</h4></li>
+                        <li class="fragment"><h4 class="highlight red">Don't do this!!!</h4></li>
                     </ul>
                 </section>
 
@@ -2057,7 +2474,7 @@
                     </div>
 
                     <p class="bottom-50 left">
-                        <span class="o">def</span> <span class="p">mockFooService</span> = (FooService, constructorArgs: [<span class="g">"Foo"</span>, <span class="b">2</span>])
+                        <span class="o">def</span> <span class="p">mockFooService</span> = Spy(FooService, constructorArgs: [<span class="b">2</span>])
                     </p>
 
                     <aside class="notes">
@@ -2363,7 +2780,7 @@ def <span class="g">"only for OS X"</span>() {
                         <span style="color:#a9b7c6;background-color:#2b2b2b;">
 
 <span class="y">@Stepwise</span>
-<span class="o">class</span> ExecuteInOrderSpeck<span class="o">extends</span> Specification() {
+<span class="o">class</span> ExecuteInOrderSpec <span class="o">extends</span> Specification() {
 
     def <span class="g">"I run first"</span>() {
         ...
@@ -2417,10 +2834,36 @@ def <span class="g">"only for OS X"</span>() {
 
 <span class="o">class</span> MySpec <span class="o">extneds</span> Specification() {
 
-    <span class="y">@Use</span>(ListExtensions)
+    <span class="y">@Use</span>([ListExtensions])
     <span class="o">def</span> <span class="g">"averaging contents of a list"</span>() {
         expect:
             [<span class="b">1, 2, 3</span>].avg() == <span class="b">2</span>
+    }
+}
+                        </span>
+                    </pre>
+
+                </section>
+
+<!--###################################################################################################################################################################################-->
+                <section>
+
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:20pt;">
+                        <span style="color:#a9b7c6;background-color:#2b2b2b;">
+
+<span class="o">class</span> ListExtensions () {
+    static avg(List list) { list.sum() / list.size() }
+}
+
+
+
+<span class="o">class</span> MySpec <span class="o">extneds</span> Specification() {
+
+    <span class="o">def</span> <span class="g">"averaging contents of a list"</span>() {
+        expect:
+            <span class="highlight red">use(ListExtensions) {</span>
+                [<span class="b">1, 2, 3</span>].avg() == <span class="b">2</span>
+            <span class="highlight red">}</span>
     }
 }
                         </span>
@@ -2554,9 +2997,134 @@ def <span class="g">"only for OS X"</span>() {
                     </h2>
                 </section>
 <!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>
+                        3 Parts
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>
+                        Annotation
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>
+                        Extension
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+                <section>
+                    <h2>
+                        Interceptor
+                    </h2>
+                </section>
+<!--###################################################################################################################################################################################-->
+
+                <section class="code" data-transition="none">
+
+                    <h2>Annotation</h2>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:16pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+    <span class="y">@Retention</span>(RetentionPolicy.RUNTIME)
+    <span class="y">@Target</span>([ElementType.TYPE, ElementType.METHOD])
+    <span class="y">@ExtensionAnnotation</span>(SayOnFailExtension)
+
+    <span class="o">public</span> @<span class="o">interface</span> <span class="y">SayOnFail</span> {
+        String value() <span class="o">default</span> <span class="g">''</span>
+        String voice() <span class="o">default</span> <span class="g">"Alex"</span>
+    }
+                    </span></pre>
+
+                </section>
+<!--###################################################################################################################################################################################-->
+                <section class="code" data-transition="none">
+
+                    <h2>Extension</h2>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:15pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="o">class</span> SayOnFailExtension <span class="o">extends</span> AbstractAnnotationDrivenExtension&lt<span class="y">SayOnFail</span>&gt{
+
+    <span class="y">@Override</span>
+    <span class="o">void</span> visitSpecAnnotation(<span class="y">SayOnFail</span> sayOnError, SpecInfo spec) {
+        spec.<span class="p">features</span>.each {FeatureInfo feature ->
+            <span class="o">if</span>(!feature.<span class="p">featureMethod</span>.<span class="p">reflection</span>.isAnnotationPresent(SayOnFail)) {
+                visitFeatureAnnotation(sayOnError, feature)
+            }
+        }
+    }
+
+    <span class="y">@Override</span>
+    <span class="o">void</span> visitFeatureAnnotation(<span class="y">SayOnFail</span> sayOnError, FeatureInfo feature) {
+        <span class="o">def</span> interceptor = <span class="o">new</span> SayOnFailInterceptor(sayOnError, feature)
+        feature.<span class="p">getFeatureMethod</span>().addInterceptor(interceptor)
+    }
+}
+                    </span></pre>
+
+                </section>
+<!--###################################################################################################################################################################################-->
+              <section class="code" data-transition="none">
+
+                    <h2>Interceptor</h2>
+                    <pre style="line-height: 108%;font-family:monospace;background-color:#2b2b2b; border-width:0.01mm; border-color:#000000; border-style:solid;padding:4px;font-size:15pt;"><span style="color:#a9b7c6;background-color:#2b2b2b;">
+<span class="o">class</span> SayOnFailInterceptor <span class="o">implements</span> IMethodInterceptor{
+
+    <span class="y">SayOnFail</span> <span class="p">sayOnError</span>
+    FeatureInfo <span class="p">featureInfo</span>
+
+    SayOnFailInterceptor(<span class="y">SayOnFail</span> sayOnError, FeatureInfo featureInfo) {
+        <span class="o">this</span>.<span class="p">sayOnError</span> = sayOnError
+        <span class="o">this</span>.<span class="p">featureInfo</span> = featureInfo
+    }
+
+    void intercept(IMethodInvocation invocation) {
+        <span class="o">try</span> {
+           invocation.proceed()
+        } <span class="o">catch</span>(Throwable t) {
+            <span class="o">def</span> methodName = <span class="p">featureInfo</span>.<span class="p">getFeatureMethod</span>().<span class="p">name</span>
+            <span class="o">def</span> voiceName = <span class="p">sayOnError</span>.voice()
+            <span class="o">def</span> sayText = <span class="p">sayOnError</span>.value() ?: <span class="g">"Danger! Failure for:</span> $methodName"
+            <span class="o">try</span> {
+                <span class="g">"say -v</span> $voiceName $sayText".execute()
+            } <span class="o">catch</span> (IOException ex) {}
+
+            <span class="o">throw</span> t
+        }
+    }
+}
+                    </span></pre>
+
+                </section>
+<!--###################################################################################################################################################################################-->
+
+            <section>
+
+                <h1>Demo</h1>
+            </section>
 
 
-			</div>
+            <section>
+                <h1>Thank you</h1>
+            </section>
+
+
+            <section>
+                <div class="left">
+                    <h2>Links & Referencse</h2>
+
+                    <p>
+                        Spock Docs: <br/>
+                        <a href="http://docs.spockframework.org/en/latest/index.html">http://docs.spockframework.org/en/latest/index.html</a>
+                        <br/>
+                        <a href="https://code.google.com/p/spock/w/list">https://code.google.com/p/spock/w/list</a>
+                    </p>
+                    
+                    <p>
+                        Custom Extensions Examples <br/>
+                        <a href="https://github.com/zanthrash/spock-extensions">https://github.com/zanthrash/spock-extensions</a>
+                    </p>
+                </div>
+            </section>
 
 		</div>
 
@@ -2598,7 +3166,7 @@ def <span class="g">"only for OS X"</span>() {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 				]
 
 			});
